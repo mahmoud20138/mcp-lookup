@@ -13,13 +13,13 @@ Search 2425+ MCP servers and get ready-to-use configs.
 
 The user invoked this command with: $ARGUMENTS
 
-## Instructions
+## Instructions (LAZY LOAD — never read the full file)
 
 1. Parse the user's search query from `$ARGUMENTS`
-2. Open the reference file at `skills/mcp-lookup/references/mcp-servers-lookup.md`
+2. **Use Grep** on `skills/mcp-lookup/references/mcp-servers-lookup.md` — NEVER read the full file (1.1MB)
 3. Search using Grep for the query terms
 4. If `--domain` is specified, filter to that domain section only
-5. Present the results in a clean format:
+5. Present the results in a clean format
 
 ### Output Format
 
@@ -41,6 +41,12 @@ For each match, show:
 - Show the top 10 most relevant matches
 - Suggest narrowing with `--domain`
 - Group results by domain
+
+## Performance Rules
+
+- **NEVER read the full reference file** — always use Grep
+- **Limit output**: Max 10 results per search
+- **Suggest narrowing** if >10 matches
 
 ## Available Domains
 

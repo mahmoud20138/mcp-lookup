@@ -1,6 +1,6 @@
 {
   "name": "awesome-mcp-lookup",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "OpenClaude plugin for searching 2425+ MCP servers with ready-to-use configs",
   "keywords": [
     "openclaude-plugin",

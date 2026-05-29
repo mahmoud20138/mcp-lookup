@@ -1,57 +1,55 @@
 ---
 name: mcp-lookup
-description: This skill should be used when the user asks about MCP servers, Model Context Protocol tools, wants to find or discover MCP servers, asks "what MCP servers exist for X", needs MCP server configs, or discusses integrating external tools with Claude Code. Provides a searchable catalog of 2425+ MCP servers across 39 domains.
-version: 1.0.0
+description: Use ONLY when the user explicitly asks to find, search, discover, or browse MCP servers, or asks "what MCP servers exist for X". Do NOT activate for general MCP questions, MCP config help, or casual mentions of MCP.
+version: 1.0.1
 ---
 
 # MCP Server Lookup
 
-Search and discover 2425+ MCP servers across 39 domains with ready-to-use configs.
+Search 2425+ MCP servers across 39 domains. Returns ready-to-use configs.
 
-## When This Skill Applies
+## Activation Rules
 
-Activate when the user:
-- Asks about MCP servers for a specific task or domain
-- Wants to find, discover, or browse MCP servers
-- Needs an MCP server config to add to their setup
-- Asks "what MCP servers exist for X" or "is there an MCP server for Y"
-- Discusses integrating external tools, APIs, or services with Claude Code
-- Mentions Model Context Protocol, MCP tools, or MCP integrations
+**ONLY activate when the user explicitly wants to FIND or SEARCH for MCP servers.** Examples:
+- "find MCP servers for databases"
+- "what MCP servers exist for web scraping"
+- "search MCP servers for finance"
+- "browse available MCP servers"
 
-## How to Search
+**Do NOT activate for:**
+- General questions about MCP protocol
+- Help configuring an already-known MCP server
+- Casual mentions of "MCP" without a search intent
+- Questions about how MCP works
 
-The full server catalog is at: `skills/mcp-lookup/references/mcp-servers-lookup.md`
+## How to Search (LAZY LOAD — never read the full file)
 
-### Search Strategy
+The catalog is at: `skills/mcp-lookup/references/mcp-servers-lookup.md` (1.1MB — NEVER read the full file)
 
-1. **By domain**: The catalog is organized into 39 domains. Check the domains table at the top of the file to find the relevant section:
-   - AI, Analytics, Web, Search, Finance, Design, Security, Productivity, Files, Geo, Knowledge, Database, HR, Automation, DevOps, Ecommerce, Blockchain, Media, Communication, Cloud, Science, Testing, Translation, Government, Networking, Legal, Social, ERP, News, Audio, Gaming, Travel, Healthcare, IoT, Weather, Education, Caching, Utility, Messaging, Food, CRM, Fitness, CMS
+**Always use Grep to search.** Never use Read on the full file.
 
-2. **By keyword**: Use Grep to search the reference file for keywords matching the user's need (e.g., "github", "docker", "postgres", "slack", "stripe")
-
-3. **By name**: If the user mentions a specific server name, grep for it directly
+1. **By keyword**: `Grep pattern="<keyword>" path="skills/mcp-lookup/references/mcp-servers-lookup.md"`
+2. **By domain**: `Grep pattern="### <Domain>" path="skills/mcp-lookup/references/mcp-servers-lookup.md"` to find the section header, then grep for specific terms within that domain
+3. **By name**: `Grep pattern="<owner/repo>" path="skills/mcp-lookup/references/mcp-servers-lookup.md"`
 
 ### Presenting Results
 
-When you find matching servers:
-1. Show the server name with its GitHub link
-2. Show the install command
-3. Show the domain tags
-4. Show the description
-5. **Always include the ready-to-use config JSON** — this is the key value of this plugin
+For each match, show:
+- Server name with GitHub link
+- Install command
+- Domain tags
+- Description
+- **Config JSON** (ready to copy into `mcpServers`)
 
 ### Config Format
 
-Each server entry includes a config JSON block like:
 ```json
 "server-name":{"type":"stdio","command":"npx","args":["-y","package-name"]}
 ```
 
-To use it, tell the user to add it to their `~/.openclaude.json` under `mcpServers`, or to their project's `.mcp.json`.
+## Performance Rules
 
-## Tips
-
-- If the user's query is vague, suggest 2-3 relevant domains and ask which interests them
-- For broad queries, show the top 5-10 most relevant results, not all matches
-- Always note the total count of matches found
-- If a server appears dead (link broken), mention it but still show the config
+- **NEVER read the full reference file** — it's 1.1MB and will waste context
+- **Always use Grep** to search for specific terms
+- **Limit output**: Show max 5-10 results for broad queries
+- **Suggest domains** if the query is vague — don't grep blindly
