@@ -1,0 +1,19 @@
+{
+  "name": "awesome-mcp-lookup",
+  "version": "1.0.0",
+  "description": "Search 2425+ MCP servers by domain, keyword, or name. Includes ready-to-use configs for every server across 39 domains.",
+  "author": {
+    "name": "Mahmoud Ali",
+    "email": "mahmoud20138@users.noreply.github.com"
+  },
+  "homepage": "https://github.com/mahmoud20138/mcp-lookup",
+  "repository": "https://github.com/mahmoud20138/mcp-lookup",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "mcp-servers",
+    "model-context-protocol",
+    "awesome-list",
+    "server-directory"
+  ]
+}
