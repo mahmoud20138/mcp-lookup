@@ -74,13 +74,13 @@ AI, Analytics, Web, Search, Finance, Design, Security, Productivity, Files, Geo,
 awesome-mcp-lookup/
 ├── .claude-plugin/
 │   └── plugin.json              # Plugin metadata
+├── commands/
+│   └── mcp-search.md            # /mcp-search slash command
 ├── skills/
-│   ├── mcp-lookup/
-│   │   ├── SKILL.md             # Auto-invoked skill
-│   │   └── references/
-│   │       └── mcp-servers-lookup.md  # Server catalog (2425+)
-│   └── mcp-search/
-│       └── SKILL.md             # /mcp-search command
+│   └── mcp-lookup/
+│       ├── SKILL.md             # Auto-invoked skill
+│       └── references/
+│           └── mcp-servers-lookup.md  # Server catalog (2425+)
 ├── package.json
 ├── README.md
 └── LICENSE
