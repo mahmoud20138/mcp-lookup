@@ -7,18 +7,34 @@ OpenClaude plugin — search **2425+ MCP servers** across **39 domains** with re
 
 ## Install
 
-```bash
-# Install the plugin globally
-npm install -g awesome-mcp-lookup
+### Option 1: Via Claude Code plugin system (recommended)
 
-# Then install it in OpenClaude
-openclaude plugins install awesome-mcp-lookup
+```
+/plugin install awesome-mcp-lookup@mahmoud20138-plugins
 ```
 
-Or install directly from GitHub:
+If the marketplace isn't registered yet, add it first:
+
+```
+/plugin marketplace add github:mahmoud20138/claude-plugins
+```
+
+### Option 2: Via npm
 
 ```bash
-openclaude plugins install github:mahmoud20138/mcp-lookup
+npm install -g awesome-mcp-lookup
+```
+
+Then in Claude Code:
+
+```
+/plugin install awesome-mcp-lookup
+```
+
+### Option 3: Direct from GitHub
+
+```
+/plugin install github:mahmoud20138/mcp-lookup
 ```
 
 ## Usage
